@@ -10,6 +10,9 @@ global $reg_error;
         $your_password = $_POST['password'];// for demo purposes only to display to registered user after succesful sign up
         $password = md5($_POST['password']);
         
+
+
+
         $stmt = mysqli_prepare($db_connect, "INSERT INTO users (fullname,email,password) VALUES (?, ?, ?)");
         mysqli_stmt_bind_param($stmt, 'sss', $fullname, $email, $password);
 
@@ -18,6 +21,6 @@ global $reg_error;
             $reg_success =  "User Created Successfully.";
             
         } else {
-            $reg_error =  "Error in Creating Order" . mysqli_error($db_connect) ;
+            $reg_error =  "Error in Creating User" . mysqli_stmt_error($stmt); 
      }
  }

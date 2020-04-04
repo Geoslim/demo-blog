@@ -28,6 +28,6 @@ global $error;
                 
                 header('Location: dashboard/index.php');                
             }  else {
-                $invalid =  'Access Denied! Check your login details properly.'. mysqli_error($db_connect); 
+                $invalid =  'Access Denied! Check your login details properly.'. mysqli_stmt_error($stmt); 
             }
        } 

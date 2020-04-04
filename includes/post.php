@@ -21,7 +21,7 @@ global $post_error;
           $post_success =  "Post Created Successfully.";
           
           } else {
-                $post_error =  "Error in Creating Post" . mysqli_error($db_connect) ;
+                $post_error =  "Error in Creating Post" . mysqli_stmt_error($stmt); 
                 }
     }
 
