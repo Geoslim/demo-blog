@@ -76,7 +76,7 @@ require_once 'includes/post.php'; // post
                     </div>
             
                 </div>
-                <
+                
                 <?php }
 
                  }else {?>
