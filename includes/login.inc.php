@@ -18,15 +18,15 @@ global $error;
 
             mysqli_stmt_bind_result($stmt, $id, $fullname, $email);
 
-            mysqli_stmt_store_result($stmt);
-
+         
             if (mysqli_stmt_fetch($stmt)) {
 
                 $_SESSION['user_id'] = $id;
                 $_SESSION['fullname'] = $fullname;
                 $_SESSION['email'] = $email;
                 
-                header('Location: dashboard/index.php');                
+                header('Location: dashboard/index.php');
+                
             }  else {
                 $invalid =  'Access Denied! Check your login details properly.'. mysqli_stmt_error($stmt); 
             }
