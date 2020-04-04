@@ -8,37 +8,26 @@ global $error;
         $email = $_POST['email'];
         $password = md5($_POST['password']);
     
-        // $stmt = mysqli_prepare($db_connect, "SELECT fullname, email, password FROM users WHERE email=? AND password=?");
-        // mysqli_stmt_execute($stmt);
+        $query = "SELECT id, fullname, email FROM users WHERE email=? AND password=?";
 
-        //     mysqli_stmt_bind_param($stmt, 'ss', $email, $password);
-        //     mysqli_stmt_bind_result($stmt, $email, $password);
-        
-        //     if($stmt){
-        //         echo "yeh";
-        //     }
-            /* fetch value */
-           
-        
+        $stmt = mysqli_prepare($db_connect, $query);
 
+            mysqli_stmt_bind_param($stmt, "ss", $email, $password);
 
+            mysqli_stmt_execute($stmt);
 
-    
+            mysqli_stmt_bind_result($stmt, $id, $fullname, $email);
 
-    $query= "SELECT * FROM `users` WHERE `email` = '$email' AND `password` = '$password'";
-    $query_run =  mysqli_query($db_connect, $query);
-        $query_row = mysqli_fetch_array($query_run);
-       
-            if ( $query_row) {
-                $_SESSION['user_id'] = $query_row['id'];
-                $_SESSION['fullname'] = $query_row['fullname'];
-                $_SESSION['email'] = $query_row['email'];
-                
+            mysqli_stmt_store_result($stmt);
+
+            if (mysqli_stmt_fetch($stmt)) {
+
+                $_SESSION['user_id'] = $id;
+                $_SESSION['fullname'] = $fullname;
+                $_SESSION['email'] = $email;
                 
                 header('Location: dashboard/index.php');                
             }  else {
                 $invalid =  'Access Denied! Check your login details properly.'. mysqli_error($db_connect); 
             }
-       } else{
-                $error =  'Login Error.'. mysqli_error($db_connect); 
-       }
+       } 

@@ -4,7 +4,6 @@ require_once 'includes/core.php';
 require_once 'includes/dbconnect.php'; 
 require_once 'includes/post.php'; // post 
 
-
 ?>
 
 <!DOCTYPE html>
@@ -37,22 +36,19 @@ require_once 'includes/post.php'; // post
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
-                    <li class="nav-item ">
-                        <a class="nav-link" href="#">Home </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="login.php">Login</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="register.php">Register</a>
-                    </li>
-                    
-                   
+                        <li class="nav-item ">
+                            <a class="nav-link" href="#">Home </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="login.php">Login</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="register.php">Register</a>
+                        </li>
                     </ul>
                    
                 </div>
             </nav>
-
 
         </div>
 
@@ -61,11 +57,9 @@ require_once 'includes/post.php'; // post
                
             <span class="col-md-2"></span>
             <div class="col-md-8">
-            <?php 
-                mysqli_stmt_store_result($stmt);
-                if(mysqli_stmt_num_rows($stmt) > 0){
-            ?>
-            <?php  while (mysqli_stmt_fetch($stmt)) {  ?>
+            <?php if(mysqli_stmt_num_rows($stmt) > 0) { 
+                
+                while (mysqli_stmt_fetch($stmt)) { ?>
                 <div class="card mt-4">
                 
                     <div class="card-header bg-dark">
@@ -82,8 +76,10 @@ require_once 'includes/post.php'; // post
                     </div>
             
                 </div>
-                <?php } ?>
-                <?php }else {?>
+                <
+                <?php }
+
+                 }else {?>
                     <h5 class="text-center">No posts to display</h5>       
                 <?php  }?>
             </div>
@@ -95,10 +91,7 @@ require_once 'includes/post.php'; // post
 
     <!-- Bootstrap -->
     <script src="assets/js/bootstrap.min.js"></script>
-    
-    
- 
-    <?php mysqli_close($db_connect)?>
+
   </body>
 </html>
 

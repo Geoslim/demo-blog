@@ -119,10 +119,7 @@ require_once 'includes/dbconnect.php';
 
     <!-- Bootstrap -->
     <script src="assets/js/bootstrap.min.js"></script>
-    
-    
- 
-    <?php mysqli_close($db_connect)?>
+  
   </body>
 </html>
 

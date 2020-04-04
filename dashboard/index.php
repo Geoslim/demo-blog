@@ -99,10 +99,7 @@ if (!isset($_SESSION['user_id'])){
 
                     <div class="card-body">
 
-                        <?php 
-                        mysqli_stmt_store_result($stmt);
-                        if(mysqli_stmt_num_rows($stmt) > 0){
-                        ?>
+                        <?php if(mysqli_stmt_num_rows($stmt) > 0) { ?>
                         <table class="table">
                             <thead class="thead-light">
                                 <tr>
@@ -113,9 +110,7 @@ if (!isset($_SESSION['user_id'])){
                             <tbody>
                             <?php  
                             
-                            while (mysqli_stmt_fetch($stmt)) {
-                               
-                                 ?>
+                            while (mysqli_stmt_fetch($stmt)) { ?>
                                 <tr>
                                     <td><?php echo $title; ?></td>
                                     <td><?php echo $description; ?></td>
@@ -124,10 +119,10 @@ if (!isset($_SESSION['user_id'])){
                             <?php } ?>
                             </tbody>
                         </table>
-                            <?php }else {?>
+                            <?php } else {?>
                                 <h5 class="text-center">No posts to display</h5>       
 
-                           <?php  }?>
+                           <?php  } ?>
                     </div>
             
                 </div>
@@ -135,7 +130,6 @@ if (!isset($_SESSION['user_id'])){
             </div>
 
             <div class="col-md-4">
-
 
                 <div class="card ">
                
@@ -171,10 +165,7 @@ if (!isset($_SESSION['user_id'])){
 
     <!-- Bootstrap -->
     <script src="../assets/js/bootstrap.min.js"></script>
-    
-    
- 
-    <?php mysqli_close($db_connect)?>
+
   </body>
 </html>
 

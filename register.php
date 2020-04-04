@@ -1,7 +1,6 @@
 
 <?php 
 require_once 'includes/core.php'; 
-
 require_once 'includes/dbconnect.php';
 require_once 'includes/reg.inc.php'; 
 
@@ -129,9 +128,6 @@ require_once 'includes/reg.inc.php';
     <!-- Bootstrap -->
     <script src="assets/js/bootstrap.min.js"></script>
     
-    
- 
-    <?php mysqli_close($db_connect)?>
   </body>
 </html>
 
