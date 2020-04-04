@@ -65,6 +65,11 @@ require_once 'includes/post.php'; // post
                     <div class="card-header bg-dark">
                         <h5 class="text-white"><?php echo $title; ?></h5>
                         <p class="text-white"><?php echo $description; ?></p>
+                        <small class="text-white"><em>posted: </em>
+                            <?php 
+                            $date = date_create($created_at);
+                            echo date_format($date, 'M j, Y | H:i a');?>
+                        </small>
                     </div>
 
                     <div class="card-body">

@@ -29,12 +29,17 @@ global $post_error;
 
 
 // to fetch posts from database
-  $fetch_query = "SELECT id, title, description, content FROM posts ORDER by created_at DESC";
+
+  $fetch_query = "SELECT id, title, description, content, created_at FROM posts ORDER by created_at DESC";
   $stmt = mysqli_prepare($db_connect, $fetch_query);
 
       mysqli_stmt_execute($stmt);
 
-      mysqli_stmt_bind_result($stmt, $id, $title, $description, $content);
+      mysqli_stmt_bind_result($stmt, $id, $title, $description, $content, $created_at);
 
       mysqli_stmt_store_result($stmt);
+
+
+
 ?>
+

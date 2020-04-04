@@ -98,7 +98,7 @@ if (!isset($_SESSION['user_id'])){
                     </div>
 
                     <div class="card-body">
-
+                    
                         <?php if(mysqli_stmt_num_rows($stmt) > 0) { ?>
                         <table class="table">
                             <thead class="thead-light">
