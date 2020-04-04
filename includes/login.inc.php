@@ -17,8 +17,7 @@ global $error;
             mysqli_stmt_execute($stmt);
 
             mysqli_stmt_bind_result($stmt, $id, $fullname, $email);
-
-         
+  
             if (mysqli_stmt_fetch($stmt)) {
 
                 $_SESSION['user_id'] = $id;

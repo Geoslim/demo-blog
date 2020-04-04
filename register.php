@@ -89,7 +89,10 @@ require_once 'includes/reg.inc.php';
                     }elseif($reg_error){
                     echo "<div class=\"alert alert-danger\"> $reg_error </div>";
 
-                    }
+                    }elseif($reg_email_exists){
+                        echo "<div class=\"alert alert-danger\"> $reg_email_exists </div>";
+    
+                        }
                 ?>
 
                 <div class="card ">
