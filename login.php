@@ -75,7 +75,7 @@ require_once 'includes/dbconnect.php';
 
 
             <?php if($invalid){ 
-                    echo "<div class=\"alert alert-danger\"> $invalid </div>";
+                    echo "<div class=\"alert alert-danger\"> $invalid $error</div>";
 
                     }
                 ?>

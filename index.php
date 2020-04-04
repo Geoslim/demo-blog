@@ -57,38 +57,35 @@ require_once 'includes/post.php'; // post
         </div>
 
        
-
         <div class=" row mt-5">
                
             <span class="col-md-2"></span>
             <div class="col-md-8">
-
-                <?php $posts_query_run = get_all_posts();
-                $posts_row_count = mysqli_num_rows($posts_query_run);
-                ?>
-                <?php
-                if($posts_row_count > 0) { ?>
-                  <?php  while ($posts_row = mysqli_fetch_array($posts_query_run)) { ?>
+            <?php 
+                mysqli_stmt_store_result($stmt);
+                if(mysqli_stmt_num_rows($stmt) > 0){
+            ?>
+            <?php  while (mysqli_stmt_fetch($stmt)) {  ?>
                 <div class="card mt-4">
                 
                     <div class="card-header bg-dark">
-                        <h5 class="text-white"><?php echo $posts_row['title']; ?></h5>
-                        <p class="text-white"><?php echo $posts_row['description']; ?></p>
+                        <h5 class="text-white"><?php echo $title; ?></h5>
+                        <p class="text-white"><?php echo $description; ?></p>
                     </div>
 
                     <div class="card-body">
-                    <?php echo substr($posts_row['content'], 0,200); ?>
+                    <?php echo substr($content, 0,200); ?>
                     </div>
 
                     <div class="card-footer">
-                        <a href="?post= <?php echo urlencode($posts_row['id']); ?>" class="btn btn-sm btn-dark"> View Details </a>
+                        <a href="?post= <?php echo urlencode($id); ?>" class="btn btn-sm btn-dark"> View </a>
                     </div>
             
                 </div>
                 <?php } ?>
-                <?php } else {?>
-                    <span class="text-center alert alert-dark text-white"><h3>No Posts to display</h3></span>
-                <?php }?>
+                <?php }else {?>
+                    <h5 class="text-center">No posts to display</h5>       
+                <?php  }?>
             </div>
 
            

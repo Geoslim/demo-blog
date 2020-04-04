@@ -99,32 +99,35 @@ if (!isset($_SESSION['user_id'])){
 
                     <div class="card-body">
 
-                        <?php $posts_query_run = get_all_posts();
-                        $posts_row_count = mysqli_num_rows( $posts_query_run);
+                        <?php 
+                        mysqli_stmt_store_result($stmt);
+                        if(mysqli_stmt_num_rows($stmt) > 0){
                         ?>
-                        <?php
-                        if($posts_row_count > 0) { ?>
                         <table class="table">
                             <thead class="thead-light">
                                 <tr>
                                 <th>Title</th>
                                 <th>Description</th>
-                                <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                            <?php  while ($posts_row = mysqli_fetch_array($posts_query_run)) { ?>
+                            <?php  
+                            
+                            while (mysqli_stmt_fetch($stmt)) {
+                               
+                                 ?>
                                 <tr>
-                                    <td><?php echo $posts_row['title']; ?></td>
-                                    <td><?php echo $posts_row['description']; ?></td>
+                                    <td><?php echo $title; ?></td>
+                                    <td><?php echo $description; ?></td>
                                     <td></td>                                   
                                 </tr>
                             <?php } ?>
                             </tbody>
                         </table>
-                        <?php } else {?>
-                            <h3 class="text-center">No Posts to display</h3>
-                        <?php }?>
+                            <?php }else {?>
+                                <h5 class="text-center">No posts to display</h5>       
+
+                           <?php  }?>
                     </div>
             
                 </div>
